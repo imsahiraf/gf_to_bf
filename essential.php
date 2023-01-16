@@ -13,12 +13,23 @@ if (!function_exists('is_plugin_active')) {
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 
-// Here list of plugins which can be active
-$plugin = [
-    'autoptimize/autoptimize' => 'autoptimize_html_after_minify',
-    'wp-fastest-cache/wpFastestCache' => 'wpfc_buffer_callback_filter',
-    'wp-rocket/wp-rocket' => 'rocket_buffer',
-    'w3-total-cache/w3-total-cache' => 'w3tc_process_content',
-    'wp-super-cache/wp-cache' => 'wp_cache_ob_callback_filter'
-];
+function gfbf_bunny_init_ob(){
+    ob_start();
+}
+
+function gfbf_bunny_shutdown()
+    {
+        $data = '';
+
+        // We'll need to get the number of ob levels we're in, so that we can iterate over each, collecting
+        // that buffer's output into the final output.
+        $levels = ob_get_level();
+
+        for ($i = 0; $i < $levels; $i++) {
+            $data .= ob_get_clean();
+        }
+
+        // Apply any filters to the final output
+        echo apply_filters('gfbf_bunny_fonts_filter_output', $data);
+    }
 ?>
