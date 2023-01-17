@@ -2,8 +2,7 @@
 
 class gfbf {
 
-	static $check = 0;
-	static $__gfbf_pluginlist = '';
+	private $__gfbf_pluginlist = '';
 
 	function __construct(){
 
@@ -19,7 +18,7 @@ class gfbf {
 	}
 	static function check_plugin(){
 		
-		foreach($this->__gfbf_pluginlist as $pl_key => $pl_val){
+		foreach(self::$__gfbf_pluginlist as $pl_key => $pl_val){
 
 			if (is_plugin_active($pl_key.'.php')) {
 
