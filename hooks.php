@@ -1,11 +1,11 @@
 <?php
 
-add_filter('gfbf_bunny_fonts_filter_output', function ($output) {
+add_filter('gfbf_bunny_fonts_filter_output', function ($gfbf_page) {
 
 		// if html contains 'fonts.googleapis.com'
-	if (str_contains($output, 'fonts.googleapis.com/css')) {
+	if (str_contains($gfbf_page, 'fonts.googleapis.com/css')) {
 		// replace with 'fonts.bunny.net'
-		$output = str_replace('fonts.googleapis.com/css', 'fonts.bunny.net/css', $output);
+		$gfbf_page = str_replace('fonts.googleapis.com/css', 'fonts.bunny.net/css', $gfbf_page);
 	}
 
 	if (apply_filters('gfbf_bunny_remove_google_preconnect', true)) {
@@ -24,7 +24,7 @@ add_filter('gfbf_bunny_fonts_filter_output', function ($output) {
 
 		// Remove preconnects
 		foreach ($preconnect_lookups as $preconnect_lookup) {
-			$output = str_replace($preconnect_lookup, '', $output);
+			$gfbf_page = str_replace($preconnect_lookup, '', $gfbf_page);
 		}
 	}
 
@@ -42,19 +42,19 @@ add_filter('gfbf_bunny_fonts_filter_output', function ($output) {
 
 		// Remove prefetches
 		foreach ($prefetch_lookups as $prefetch_lookup) {
-			$output = str_replace($prefetch_lookup, '', $output);
+			$gfbf_page = str_replace($prefetch_lookup, '', $gfbf_page);
 		}
 	}
 
 	if (apply_filters('gfbf_bunny_insert_gfbf_bunny_preconnect', true)) {
 		// check if html contains <link rel="preconnect" href="https://fonts.bunny.net"> when not insert it
-		if (!str_contains($output, '<link rel="preconnect" href="https://fonts.bunny.net">')) {
-			$output = str_replace('<link href="https://fonts.bunny.net', '<link rel="preconnect" href="https://fonts.bunny.net"> <link href="https://fonts.bunny.net', $output);
+		if (!str_contains($gfbf_page, '<link rel="preconnect" href="https://fonts.bunny.net">')) {
+			$gfbf_page = str_replace('<link href="https://fonts.bunny.net', '<link rel="preconnect" href="https://fonts.bunny.net"> <link href="https://fonts.bunny.net', $gfbf_page);
 		}
 	}
 
 
-	return $output;
+	return $gfbf_page;
 });
 
 ?>
