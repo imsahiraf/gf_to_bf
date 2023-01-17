@@ -16,13 +16,12 @@ Replace Your Google Fonts with Bunny Fonts in the HTML Language of your WordPres
 = Supported Cache Plugins =
 
 * Autoptimize
-* SiteGround Optimizer
-* Swift Performance Lite
 * W3 Total Cache
 * WP Fastest Cache Plugin
 * WP Rocket
 * WP Super Cache
 
+(Adding more stay stuned)
 
 == Installation ==
 
