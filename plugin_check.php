@@ -2,12 +2,12 @@
 
 class gfbf {
 
-	private $__gfbf_pluginlist = '';
+	private static $__gfbf_pluginlist = [];
 
 	function __construct(){
 
 		// Here list of plugins which can be active
-		$this->__gfbf_pluginlist = [
+		self::$__gfbf_pluginlist = [
 			'autoptimize/autoptimize' => 'autoptimize_html_after_minify',
 			'wp-fastest-cache/wpFastestCache' => 'wpfc_buffer_callback_filter',
 			'wp-rocket/wp-rocket' => 'rocket_buffer',
@@ -16,7 +16,8 @@ class gfbf {
 		];
 
 	}
-	static function check_plugin(){
+	
+	static function gfbf_check_plugin(){
 		
 		foreach(self::$__gfbf_pluginlist as $pl_key => $pl_val){
 
@@ -28,15 +29,17 @@ class gfbf {
 			
 			}
 
-			//we use 'init' action to use ob_start()
-			add_action('init', 'gfbf_bunny_init_ob');
-
-			// get the pages html
-			add_action('shutdown', 'gfbf_bunny_shutdown', 0);
-
 		}
+
+		//we use 'init' action to use ob_start()
+		add_action('init', 'gfbf_bunny_init_ob');
+
+		// get the pages html
+		add_action('shutdown', 'gfbf_bunny_shutdown', 0);
 
 	}
 
 }
+
+
 ?>
