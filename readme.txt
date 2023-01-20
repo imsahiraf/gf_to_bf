@@ -24,6 +24,11 @@ Replace Your Google Fonts with Bunny Fonts in the HTML Language of your WordPres
 
 (Adding more stay stuned)
 
+== Third Party Use ==
+
+We use Bunny Fonts Service to replace the Google Fonts.
+Bunny font is free to use. Here are the Terms Of Service for Bunny Fonts https://bunny.net/tos/ 
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.

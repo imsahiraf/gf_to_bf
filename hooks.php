@@ -82,18 +82,14 @@ add_action('admin_notices', function (){
 	$bfgf_url = array_rand($gfbf_urllist);
 	$bfgf_page = $gfbf_urllist[$bfgf_url];
 
-	// Build the banner notice HTML
-	$html = "
-	<div class='notice notice-success is-dismissible' >
+	// Build and print the banner notice HTML
+	echo "<div class='notice notice-success is-dismissible' >
 		<p>
 			Thank You for Installing GF to BF.<br>We are here right away to help you more incase you need any free plugin we are ready to help you to built in that plugin as soon as possible.<br>Visit us for more free plugins <em><strong><a href='$bfgf_url' target='_blank'>$bfgf_page</a></strong></em> or connect with us at <em><strong><a href='mailto:info@zarsco.com'>info@zarsco.com</a></strong></em>.
 		</p>
 		<a href='javascript:' aria-label='Dismiss this Notice'></a>
-	</div>
-";
-
-	// Print the banner notice
-	echo $html;
+	</div>";
+	
 });
 
 ?>
